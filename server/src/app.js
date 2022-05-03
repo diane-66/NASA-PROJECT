@@ -18,10 +18,10 @@ app.use(morgan('combined'))
 
 app.use(express.json())
 app.use(express.static(path.join(__dirname, '..', 'public')))
-app.use(planetsRouter)
-app.use(launchesRouter)
+app.use('/planets', planetsRouter)
+app.use('/launches',launchesRouter)
 
-//in deployment, it cannot find the routes fenied in React, so we need to add this endpoint:
+//in deployment, it cannot find the routes defined in React, so we need to add this endpoint:
 app.get("/*", (req,res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
 })
