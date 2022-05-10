@@ -36,8 +36,10 @@ function loadPlanetsData() {
 }
 
 async function getAllPlanets() {
-    //we're passing the empty object as a filter to have everything:  
-    return await planets.find({})
+    //we're passing a second argument to filter properties:  
+    return await planets.find({}, {
+        '_id': 0, '__v': 0,
+    })
 }
 
 async function savePlanet(planet) {
